@@ -1,0 +1,2 @@
+export const COEFFICIENT_SCALE = 5;
+export const COEFFICIENT_SCALE_AFTER_EARTH = 2;
