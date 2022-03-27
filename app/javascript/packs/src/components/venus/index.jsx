@@ -28,7 +28,10 @@ export function Venus(props) {
 
   return (
     <>
-      <mesh ref={venusRef} position={[-84.9 * COEFFICIENT_SCALE,0,84.9 * COEFFICIENT_SCALE]}>
+      <mesh onClick={() => props.handleClick("venus")}
+            onPointerOver={() => props.setHovered(true)}
+            onPointerOut={() => props.setHovered(false)}
+            ref={venusRef} position={[-84.9 * COEFFICIENT_SCALE,0,84.9 * COEFFICIENT_SCALE]}>
         <sphereGeometry args={[9.49, 32, 32]} />
         <meshStandardMaterial map={venusDayMap} normalMap={venusNormalMap} metalness={0.4} roughness={0.7} />
       </mesh>

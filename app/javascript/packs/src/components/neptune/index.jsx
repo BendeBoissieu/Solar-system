@@ -27,7 +27,11 @@ export function Neptune(props) {
 
   return (
     <>
-      <mesh ref={neptuneRef} position={[3511.6 * COEFFICIENT_SCALE_AFTER_EARTH,0,3511.6 * COEFFICIENT_SCALE_AFTER_EARTH]}>
+      <mesh onClick={() => props.handleClick("neptune")}
+            ref={neptuneRef}
+            onPointerOver={() => props.setHovered(true)}
+            onPointerOut={() => props.setHovered(false)}
+            position={[3511.6 * COEFFICIENT_SCALE_AFTER_EARTH,0,3511.6 * COEFFICIENT_SCALE_AFTER_EARTH]}>
         <sphereGeometry args={[38.84, 32, 32]} />
         <meshStandardMaterial map={neptuneDayMap} metalness={0.4} roughness={0.7} />
       </mesh>

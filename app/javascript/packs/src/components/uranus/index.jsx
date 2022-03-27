@@ -27,7 +27,10 @@ export function Uranus(props) {
 
   return (
     <>
-      <mesh ref={uranusRef} position={[2313.6 * COEFFICIENT_SCALE_AFTER_EARTH,0,2313.6 * COEFFICIENT_SCALE_AFTER_EARTH]}>
+      <mesh onClick={() => props.handleClick("uranus")}
+            onPointerOver={() => props.setHovered(true)}
+            onPointerOut={() => props.setHovered(false)}
+            ref={uranusRef} position={[2313.6 * COEFFICIENT_SCALE_AFTER_EARTH,0,2313.6 * COEFFICIENT_SCALE_AFTER_EARTH]}>
         <sphereGeometry args={[40.1, 32, 32]} />
         <meshStandardMaterial map={uranusDayMap} metalness={0.4} roughness={0.7} />
       </mesh>

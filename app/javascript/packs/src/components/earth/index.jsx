@@ -41,10 +41,6 @@ export function Earth(props) {
     return () => clearInterval(interval);
   }, []);
 
-  function displayName( event ) {
-    console.log("Hello Earth");
-  }
-
   return (
     <>
       {/* <mesh ref={cloudRef} position={[0,0,0]}>
@@ -52,11 +48,17 @@ export function Earth(props) {
       <meshPhongMaterial map={cloudsMap} opacity={0.4} deptWrite={true} transparent={true} side={THREE.DoubleSide}/>
      </mesh> */}
       <group ref={eartMoonRef} position={[116.92 * COEFFICIENT_SCALE,0,0]} rotation={[0,0,0]}>
-        <mesh ref={moonRef}>
+        <mesh onClick={() => props.handleClick("moon")}
+              onPointerOver={() => props.setHovered(true)}
+              onPointerOut={() => props.setHovered(false)}
+              ref={moonRef}>
           <sphereGeometry args={[2.2, 32, 32]} />
           <meshStandardMaterial map={moonColorMap} normalMap={moonNormalMap} metalness={0.4} roughness={0.7} />
         </mesh>
-        <mesh onClick={(e) => displayName()} ref={earthRef}>
+        <mesh onClick={() => props.handleClick("earth")}
+              onPointerOver={() => props.setHovered(true)}
+              onPointerOut={() => props.setHovered(false)}
+              ref={earthRef}>
           <sphereGeometry args={[10, 32, 32]} />
           <meshPhongMaterial specularMap={specularMap}/>
           <meshStandardMaterial map={colorMap} normalMap={normalMap} metalness={0.4} roughness={0.7} />

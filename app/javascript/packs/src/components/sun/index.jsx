@@ -15,7 +15,10 @@ export function Sun(props) {
 
   return (
     <>
-      <mesh ref={sunRef} position={[0,0,0]}>
+      <mesh onClick={() => props.handleClick("sun")}
+            onPointerOver={() => props.setHovered(true)}
+            onPointerOut={() => props.setHovered(false)}
+            ref={sunRef} position={[0,0,0]}>
         <ambientLight intensity={0.6} />
         <sphereGeometry args={[139.0, 32, 32]} />
         <meshStandardMaterial map={colorMap} metalness={0.4} roughness={0.7} opacity={0.3} transparent={true} />

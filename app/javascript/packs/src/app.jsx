@@ -1,4 +1,4 @@
-import React, { Suspense, useState } from "react";
+import React, { Suspense, useState, useEffect } from "react";
 import styled from "styled-components";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Earth } from "./components/earth";
@@ -13,46 +13,69 @@ import { Pluto } from "./components/pluto";
 import { Sun } from "./components/sun";
 import { MapControls, useHelper, OrbitControls, Stars, OrthographicCamera } from "@react-three/drei";
 import { CameraHelper } from "three";
-
+import { Info } from "./components/Info";
 
 const sizes= {
   width: window.innerWidth,
   height: window.innerHeight
 }
 
-
 export default function App() {
+  //const [state, setState] = useState({ count: 4, theme: 'blue' });
+  //const count = state.count
+  const [state, setState] = useState({name:'sun'});
+
+  //mouse hover
+  const [hovered, setHovered] = useState(false)
+  useEffect(() => {
+    document.body.style.cursor = hovered ? 'pointer' : 'auto'
+  }, [hovered])
+
+  // function incrementCount() {
+  //   setState(prevState => {
+  //     return { ...prevState, count: prevState.count + 1 }
+  //   })
+  // }
+
+    function showDetails(name) {
+      setState(prevState => {
+        return ({name: name})
+      })
+    }
+
+
   return (
     <Wrapper className="App">
-      <Canvas clasName="canvas" orthographic camera={{ position: [0, 300, -500], zoom: 0.6, up: [0, 0, 1], far: 40000 }}>
-          <Suspense fallback={null}>
-            <MapControls
-              minZoom={0.3}
-              maxZoom={5}
-            />
+      <Info handleClick={showDetails} name={state.name}/>
+      <Canvas className="canvas" orthographic camera={{ position: [0, 300, -500], zoom: 0.6, up: [0, 0, 1], far: 40000 }}>
+        <Suspense fallback={null}>
+          <MapControls
+            minZoom={0.3}
+            maxZoom={5}
+          />
 
-            <pointLight
-              intensity={0.8}
-              position={[0, 0, 0]}
-            />
-            <Sun/>
-            <Earth />
-            <Mars />
-            <Mercury />
-            <Venus />
-            <Jupiter />
-            <Saturn />
-            <Uranus />
-            <Neptune />
-            <Pluto />
-            <Stars
-              radius={0.1} // Radius of the inner sphere (default=100)
-              depth={1000} // Depth of area where stars should fit (default=50)
-              count={20000} // Amount of stars (default=5000)
-              factor={0.008} // Size factor (default=4)
-              saturation={0} // Saturation 0-1 (default=0)
-              fade={true} // Faded dots (default=false)
-            />
+          <pointLight
+            intensity={0.8}
+            position={[0, 0, 0]}
+          />
+          <Sun handleClick={showDetails} setHovered={setHovered} />
+          <Earth handleClick={showDetails} setHovered={setHovered} />
+          <Mars handleClick={showDetails} setHovered={setHovered} />
+          <Mercury handleClick={showDetails} setHovered={setHovered} />
+          <Venus handleClick={showDetails} setHovered={setHovered}/>
+          <Jupiter handleClick={showDetails} setHovered={setHovered} />
+          <Saturn handleClick={showDetails} setHovered={setHovered} />
+          <Uranus handleClick={showDetails} setHovered={setHovered} />
+          <Neptune handleClick={showDetails} setHovered={setHovered} />
+          <Pluto handleClick={showDetails} setHovered={setHovered} />
+          {/* <Stars
+            radius={0.1} // Radius of the inner sphere (default=100)
+            depth={1000} // Depth of area where stars should fit (default=50)
+            count={20000} // Amount of stars (default=5000)
+            factor={0.008} // Size factor (default=4)
+            saturation={0} // Saturation 0-1 (default=0)
+            fade={true} // Faded dots (default=false)
+          /> */}
         </Suspense>
       </Canvas>
     </Wrapper>

@@ -28,7 +28,11 @@ export function Mars(props) {
 
   return (
     <>
-      <mesh ref={marsRef} position={[169.8 * COEFFICIENT_SCALE,0,169.8]}>
+      <mesh onClick={() => props.handleClick("mars")}
+            ref={marsRef}
+            onPointerOver={() => props.setHovered(true)}
+            onPointerOut={() => props.setHovered(false)}
+            position={[169.8 * COEFFICIENT_SCALE,0,169.8]}>
         <sphereGeometry args={[5.33, 32, 32]} />
         <meshStandardMaterial map={marsDayMap} normalMap={marsNormalMap} metalness={0.4} roughness={0.7} />
       </mesh>

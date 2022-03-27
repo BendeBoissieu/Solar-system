@@ -27,7 +27,11 @@ export function Mercury(props) {
 
   return (
     <>
-      <mesh ref={mercuryRef} position={[48.82 * COEFFICIENT_SCALE,0,48.82 * COEFFICIENT_SCALE]}>
+      <mesh onClick={() => props.handleClick("mercury")}
+            ref={mercuryRef}
+            onPointerOver={() => props.setHovered(true)}
+            onPointerOut={() => props.setHovered(false)}
+            position={[48.82 * COEFFICIENT_SCALE,0,48.82 * COEFFICIENT_SCALE]}>
         <sphereGeometry args={[3.8, 32, 32]} />
         <meshStandardMaterial map={mercuryDayMap} normalMap={mercuryNormalMap} metalness={0.4} roughness={0.7} />
       </mesh>

@@ -28,7 +28,11 @@ export function Pluto(props) {
 
   return (
     <>
-      <mesh ref={plutoRef} position={[4630.3 * COEFFICIENT_SCALE_AFTER_EARTH,0,- 4630.3 * COEFFICIENT_SCALE_AFTER_EARTH]}>
+      <mesh onClick={() => props.handleClick("pluto")}
+            ref={plutoRef}
+            onPointerOver={() => props.setHovered(true)}
+            onPointerOut={() => props.setHovered(false)}
+            position={[4630.3 * COEFFICIENT_SCALE_AFTER_EARTH,0,- 4630.3 * COEFFICIENT_SCALE_AFTER_EARTH]}>
         <sphereGeometry args={[1.8, 32, 32]} />
         <meshStandardMaterial map={plutoDayMap} normalMap={plutoNormalMap} metalness={0.4} roughness={0.7} />
       </mesh>

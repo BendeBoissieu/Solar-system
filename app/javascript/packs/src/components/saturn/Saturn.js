@@ -7,7 +7,7 @@ import { useGLTF } from '@react-three/drei'
 
 import { COEFFICIENT_SCALE_AFTER_EARTH } from "../../constants/global";
 
-export function Saturn({ ...props }) {
+export function Saturn(props) {
   const saturneRef = useRef();
 
   useEffect(() => {
@@ -21,7 +21,10 @@ export function Saturn({ ...props }) {
 
   const { nodes, materials } = useGLTF('/gltf/saturne/saturn.gltf')
   return (
-    <group ref={saturneRef} {...props} dispose={null} position={[1160.8 * COEFFICIENT_SCALE_AFTER_EARTH,0,0]} scale={18}>
+    <group onClick={() => props.handleClick("saturn")}
+           onPointerOver={() => props.setHovered(true)}
+           onPointerOut={() => props.setHovered(false)}
+           ref={saturneRef} {...props} dispose={null} position={[1160.8 * COEFFICIENT_SCALE_AFTER_EARTH,0,0]} scale={18}>
       <mesh geometry={nodes.Saturn.geometry} material={materials.Saturn} />
       <mesh geometry={nodes.SaturnRing.geometry} material={materials.SaturnRing} />
     </group>

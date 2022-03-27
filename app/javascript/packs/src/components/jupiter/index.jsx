@@ -1,10 +1,7 @@
-import React, { useRef, useEffect } from "react";
 import { useLoader } from "@react-three/fiber";
-import { TextureLoader } from "three";
-import { OrbitControls } from "@react-three/drei";
-
 import JupiterDayMap from "images/textures/jupiter/jupitermap.jpg";
-
+import React, { useEffect, useRef } from "react";
+import { TextureLoader } from "three";
 import { COEFFICIENT_SCALE_AFTER_EARTH } from "../../constants/global";
 
 export function Jupiter(props) {
@@ -27,7 +24,11 @@ export function Jupiter(props) {
 
   return (
     <>
-      <mesh onClick={(e) => console.log("click Jupiter")} ref={jupiterRef} position={[584.6 * COEFFICIENT_SCALE_AFTER_EARTH,0,584.6 * COEFFICIENT_SCALE_AFTER_EARTH]}>
+      <mesh onClick={() => props.handleClick("jupiter")}
+            onPointerOver={() => props.setHovered(true)}
+            onPointerOut={() => props.setHovered(false)}
+            ref={jupiterRef}
+            position={[584.6 * COEFFICIENT_SCALE_AFTER_EARTH,0,584.6 * COEFFICIENT_SCALE_AFTER_EARTH]}>
         <sphereGeometry args={[109.7, 32, 32]} />
         <meshStandardMaterial map={jupiterDayMap} metalness={0.4} roughness={0.7} />
       </mesh>

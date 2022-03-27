@@ -6,3 +6,15 @@
   margin: 0;
   font-family: sans-serif;
 }
+
+.details {
+  height: 100px;
+  padding: 10px;
+  color: #efdede;
+  position: absolute;
+  z-index: 111;
+  display: block;
+  margin-top: 50px;
+  margin-left: 50px;
+  line-height: 1.5rem;
+}
