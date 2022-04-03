@@ -13,8 +13,8 @@ export function Saturn(props) {
   useEffect(() => {
     const interval = setInterval(() => {
       saturneRef.current.rotation.y = ((saturneRef.current.rotation.y + 29.5* Math.PI /60000)  % (Math.PI * 2))
-      saturneRef.current.position.x = 1160.8 * COEFFICIENT_SCALE_AFTER_EARTH * Math.cos(saturneRef.current.rotation.y)
-      saturneRef.current.position.z = 1160.8 * COEFFICIENT_SCALE_AFTER_EARTH * Math.sin(saturneRef.current.rotation.y)
+      saturneRef.current.position.x = 700 * COEFFICIENT_SCALE_AFTER_EARTH * Math.cos(saturneRef.current.rotation.y)
+      saturneRef.current.position.z = 700 * COEFFICIENT_SCALE_AFTER_EARTH * Math.sin(saturneRef.current.rotation.y)
     }, 10);
     return () => clearInterval(interval);
   }, []);
@@ -24,7 +24,7 @@ export function Saturn(props) {
     <group onClick={() => props.handleClick("saturn")}
            onPointerOver={() => props.setHovered(true)}
            onPointerOut={() => props.setHovered(false)}
-           ref={saturneRef} {...props} dispose={null} position={[1160.8 * COEFFICIENT_SCALE_AFTER_EARTH,0,0]} scale={18}>
+           ref={saturneRef} {...props} dispose={null} position={[700 * COEFFICIENT_SCALE_AFTER_EARTH,0,0]} scale={18}>
       <mesh geometry={nodes.Saturn.geometry} material={materials.Saturn} />
       <mesh geometry={nodes.SaturnRing.geometry} material={materials.SaturnRing} />
     </group>

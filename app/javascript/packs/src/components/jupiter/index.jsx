@@ -10,8 +10,8 @@ export function Jupiter(props) {
   useEffect(() => {
     const interval = setInterval(() => {
       jupiterRef.current.rotation.y = ((jupiterRef.current.rotation.y + 1.19 * Math.PI /6000)  % (Math.PI * 2))
-      jupiterRef.current.position.x = 584.6 * COEFFICIENT_SCALE_AFTER_EARTH * Math.cos(jupiterRef.current.rotation.y)
-      jupiterRef.current.position.z = 584.6 * COEFFICIENT_SCALE_AFTER_EARTH * Math.sin(jupiterRef.current.rotation.y)
+      jupiterRef.current.position.x = 520 * COEFFICIENT_SCALE_AFTER_EARTH * Math.cos(jupiterRef.current.rotation.y)
+      jupiterRef.current.position.z = 520 * COEFFICIENT_SCALE_AFTER_EARTH * Math.sin(jupiterRef.current.rotation.y)
     }, 10);
     return () => clearInterval(interval);
   }, []);
@@ -28,7 +28,7 @@ export function Jupiter(props) {
             onPointerOver={() => props.setHovered(true)}
             onPointerOut={() => props.setHovered(false)}
             ref={jupiterRef}
-            position={[584.6 * COEFFICIENT_SCALE_AFTER_EARTH,0,584.6 * COEFFICIENT_SCALE_AFTER_EARTH]}>
+            position={[520 * COEFFICIENT_SCALE_AFTER_EARTH,0,520 * COEFFICIENT_SCALE_AFTER_EARTH]}>
         <sphereGeometry args={[109.7, 32, 32]} />
         <meshStandardMaterial map={jupiterDayMap} metalness={0.4} roughness={0.7} />
       </mesh>

@@ -20,8 +20,8 @@ export function Sun(props) {
             onPointerOut={() => props.setHovered(false)}
             ref={sunRef} position={[0,0,0]}>
         <ambientLight intensity={0.6} />
-        <sphereGeometry args={[139.0, 32, 32]} />
-        <meshStandardMaterial map={colorMap} metalness={0.4} roughness={0.7} opacity={0.3} transparent={true} />
+        <sphereGeometry args={[40, 32, 32]} />
+        <meshStandardMaterial map={colorMap} metalness={0.4} roughness={0.7} />
       </mesh>
     </>
   )

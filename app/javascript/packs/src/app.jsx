@@ -48,7 +48,7 @@ export default function App() {
     <Wrapper className="App">
       <Suspense fallback={<Loading />}>
         <Info handleClick={showDetails} name={state.name}/>
-        <Canvas className="canvas" orthographic camera={{ position: [0, 300, -500], zoom: 0.6, up: [0, 0, 1], far: 40000 }}>
+        <Canvas className="canvas" orthographic camera={{ position: [0, 300, -500], zoom: 0.3, up: [0, 0, 1], far: 40000, near: -2000 }}>
           <MapControls
             minZoom={0.3}
             maxZoom={5}
